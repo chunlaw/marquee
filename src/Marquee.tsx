@@ -1,6 +1,5 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useMemo } from "react";
 import { useParams } from "react-router-dom";
-import "./index.css";
 
 const Marquee = () => {
   const {
@@ -14,14 +13,10 @@ const Marquee = () => {
     () => ({
       overflow: "hidden",
       background: bgColor,
-      display: "flex",
-      height: "100vh",
-      width: "100vw",
+      flex: 1,
     }),
     [bgColor]
   );
-
-  console.log(`rolling -${duration} linear infinite`);
 
   const textStyle = useMemo<React.CSSProperties>(
     () => ({
@@ -35,6 +30,7 @@ const Marquee = () => {
       animationDuration: `${duration}s`,
       animationTimingFunction: "linear",
       animationIterationCount: "infinite",
+      overflow: "hidden",
     }),
     [color, duration]
   );
