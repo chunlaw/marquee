@@ -14,6 +14,9 @@ const Marquee = () => {
       overflow: "hidden",
       background: bgColor,
       flex: 1,
+      width: '100vw',
+      height: '100vh',
+      position: 'fixed'
     }),
     [bgColor]
   );
