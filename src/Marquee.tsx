@@ -1,5 +1,5 @@
-import React, { useEffect, useMemo, useState } from "react";
-import { useParams } from "react-router-dom";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import debounce from "lodash.debounce";
 
 const Marquee = () => {
@@ -10,8 +10,10 @@ const Marquee = () => {
     bgColor = "black",
   } = useParams();
   const [direction, setDirection] = useState<"vertical" | "horizontal">(
-    "vertical"
+    "horizontal"
   );
+  const [show, setShow] = useState<boolean>(false);
+  const navigate = useNavigate();
 
   const containerStyle = useMemo<React.CSSProperties>(
     () => ({
@@ -36,8 +38,9 @@ const Marquee = () => {
       animationDuration: `${duration}s`,
       animationTimingFunction: "linear",
       animationIterationCount: "infinite",
+      visibility: show ? "visible" : "hidden",
     }),
-    [color, duration, direction]
+    [color, duration, direction, show]
   );
 
   const handleResize = useMemo(
@@ -46,8 +49,9 @@ const Marquee = () => {
         setDirection(() =>
           window.innerHeight < window.innerWidth ? "horizontal" : "vertical"
         );
+        setShow(true);
       }, 200),
-    [setDirection]
+    [setDirection, setShow]
   );
 
   useEffect(() => {
@@ -58,8 +62,12 @@ const Marquee = () => {
     };
   }, [handleResize]);
 
+  const handleDoubleClick = useCallback(() => {
+    navigate("/");
+  }, [navigate]);
+
   return (
-    <div style={containerStyle}>
+    <div style={containerStyle} onDoubleClick={handleDoubleClick}>
       <span style={textStyle} id="text">
         {text}
       </span>
