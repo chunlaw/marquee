@@ -14,6 +14,7 @@
     "@types/node": "^16.18.3",
     "@types/react": "^18.0.25",
     "@types/react-dom": "^18.0.8",
+    "lodash.debounce": "^4.0.8",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.4.3",
@@ -49,6 +50,7 @@
   },
   "homepage": "https://marquee.chunlaw.io",
   "devDependencies": {
+    "@types/lodash.debounce": "^4.0.7",
     "gh-pages": "^4.0.0"
   }
 }
