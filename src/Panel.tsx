@@ -52,9 +52,15 @@ const CorePanel = () => {
 
   const resultUrl = useMemo(
     () =>
-      `/${state.duration}/${encodeURIComponent(
-        state.color
-      )}/${encodeURIComponent(state.bgColor)}/${state.text}`,
+      "/" +
+      [
+        state.duration,
+        encodeURIComponent(state.color),
+        encodeURIComponent(state.bgColor),
+        encodeURIComponent(
+          state.text !== "" ? state.text : "精力善用　自他共榮"
+        ),
+      ].join("/"),
     [state]
   );
 
@@ -158,6 +164,7 @@ const rowSx: SxProps<Theme> = {
   gap: 1,
   width: "100%",
   justifyContent: "space-between",
+  alignItems: "center",
 };
 
 const captionSx: SxProps<Theme> = {

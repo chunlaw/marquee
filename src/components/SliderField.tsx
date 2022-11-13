@@ -1,5 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { Box, Input, Slider, SxProps, Theme } from "@mui/material";
+import { IconButton } from "@mui/material";
+import { Add as AddIcon, Remove as MinusIcon } from "@mui/icons-material";
 
 interface SliderFieldProps {
   value: number;
@@ -12,7 +14,6 @@ const SliderField = ({ value, onChange }: SliderFieldProps) => {
   const handleInputChange = useCallback(
     (v: string) => {
       setText(v);
-      console.log(v);
       if (v.length === 0) {
       } else {
         onChange(parseFloat(v));
@@ -27,6 +28,13 @@ const SliderField = ({ value, onChange }: SliderFieldProps) => {
 
   return (
     <Box sx={rootSx}>
+      <IconButton
+        onClick={() =>
+          onChange(Math.round(Math.max(value - 0.1, 0.1) * 10) / 10)
+        }
+      >
+        <MinusIcon />
+      </IconButton>
       <Slider
         value={value}
         onChange={(e, v) => onChange(v as number)}
@@ -35,6 +43,9 @@ const SliderField = ({ value, onChange }: SliderFieldProps) => {
         max={40}
         sx={{ width: "80%" }}
       />
+      <IconButton onClick={() => onChange(Math.round((value + 0.1) * 10) / 10)}>
+        <AddIcon />
+      </IconButton>
       <Input
         value={text}
         onChange={(e) => handleInputChange(e.target.value)}
@@ -50,6 +61,7 @@ export default SliderField;
 const rootSx: SxProps<Theme> = {
   display: "flex",
   flexDirection: "space-between",
+  alignItems: "center",
   flex: 1,
   pl: 3,
   gap: 1,
