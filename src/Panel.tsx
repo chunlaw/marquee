@@ -64,7 +64,7 @@ const CorePanel = () => {
 
   return (
     <Container maxWidth="xs" sx={rootSx}>
-      <Typography variant="h1">應援板</Typography>
+      <Typography variant="h3">應援板</Typography>
       <iframe src={resultUrl} style={{ width: "100%" }} title="demo" />
       <TextField
         label={"句子"}
@@ -101,7 +101,7 @@ const CorePanel = () => {
           onClick={() => navigate(resultUrl)}
           startIcon={<LiveTvIcon />}
         >
-          Go Live!
+          Live!
         </Button>
         <Button
           variant="contained"
@@ -113,16 +113,23 @@ const CorePanel = () => {
           color="secondary"
           startIcon={<ContentCopyIcon />}
         >
-          複製網址
+          Copy Url
         </Button>
         <Button
           variant="outlined"
           onClick={() => setState(DEFAULT_STATE)}
           startIcon={<RestartAltIcon />}
         >
-          重設預設值
+          重設
         </Button>
       </Box>
+      <Typography
+        variant="caption"
+        onClick={() => window.open("https://www.flaticon.com/free-icons/fans")}
+        sx={captionSx}
+      >
+        Fans icons created by Good Ware - Flaticon
+      </Typography>
     </Container>
   );
 };
@@ -151,6 +158,10 @@ const rowSx: SxProps<Theme> = {
   gap: 1,
   width: "100%",
   justifyContent: "space-between",
+};
+
+const captionSx: SxProps<Theme> = {
+  cursor: "pointer",
 };
 
 const DEFAULT_STATE: PanelState = {
