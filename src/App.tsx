@@ -10,6 +10,10 @@ function App() {
       <Route path="/:duration/:text" element={<Marquee />} />
       <Route path="/:duration/:color/:text" element={<Marquee />} />
       <Route path="/:duration/:color/:bgColor/:text" element={<Marquee />} />
+      <Route
+        path="/:duration/:color/:bgColor/:font/:text"
+        element={<Marquee />}
+      />
       <Route path="/" element={<Panel />} />
       <Route path="*" element={<Marquee />} />
     </Routes>

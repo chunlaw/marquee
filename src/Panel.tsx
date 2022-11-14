@@ -6,6 +6,8 @@ import {
   createTheme,
   CssBaseline,
   InputLabel,
+  MenuItem,
+  Select,
   SxProps,
   TextField,
   Theme,
@@ -25,6 +27,7 @@ interface PanelState {
   text: string;
   color: string;
   bgColor: string;
+  font: string;
   duration: number;
 }
 
@@ -57,6 +60,7 @@ const CorePanel = () => {
         state.duration,
         encodeURIComponent(state.color),
         encodeURIComponent(state.bgColor),
+        encodeURIComponent(state.font),
         encodeURIComponent(
           state.text !== "" ? state.text : "精力善用　自他共榮"
         ),
@@ -101,6 +105,23 @@ const CorePanel = () => {
           onChange={(e) => handleChange("bgColor", e)}
         />
       </Box>
+      <Box sx={rowSx}>
+        <InputLabel>字體</InputLabel>
+        <Box sx={{ width: "80%" }}>
+          <Select
+            value={state.font}
+            onChange={(e) => handleChange("font", e.target.value as string)}
+            size="small"
+            fullWidth
+          >
+            {FONT_FAMILY.map(({ label, id }) => (
+              <MenuItem key={id} value={id}>
+                {label}
+              </MenuItem>
+            ))}
+          </Select>
+        </Box>
+      </Box>
       <Box sx={{ ...rowSx, justifyContent: "space-around" }}>
         <Button
           variant="contained"
@@ -144,15 +165,15 @@ const Panel = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <ins className="adsbygoogle"
-          style={{display:"block"}}
-          data-ad-client="ca-pub-4844128667931950"
-          data-ad-slot="1004241351"
-          data-ad-format="auto"
-          data-full-width-responsive="true"></ins>
-      <script>
-          (adsbygoogle = window.adsbygoogle || []).push({});
-      </script>
+      <ins
+        className="adsbygoogle"
+        style={{ display: "block" }}
+        data-ad-client="ca-pub-4844128667931950"
+        data-ad-slot="1004241351"
+        data-ad-format="auto"
+        data-full-width-responsive="true"
+      ></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
       <CorePanel />
     </ThemeProvider>
   );
@@ -180,9 +201,20 @@ const captionSx: SxProps<Theme> = {
   cursor: "pointer",
 };
 
+const FONT_FAMILY: Array<{ label: string; id: string }> = [
+  { label: "昭源黑體", id: "Chiron Hei HK WS" },
+  { label: "昭源宋體", id: "Chiron Sung HK WS" },
+  { label: '"Noto Sans HK" sans-serif', id: '"Noto Sans HK" sans-serif' },
+  {
+    label: '"Noto Sans Lao Looped" sans-serif',
+    id: '"Noto Sans Lao Looped" sans-serif',
+  },
+];
+
 const DEFAULT_STATE: PanelState = {
   text: "精力善用　自他共榮",
   color: "yellow",
   bgColor: "black",
   duration: 5,
+  font: FONT_FAMILY[0].id,
 };

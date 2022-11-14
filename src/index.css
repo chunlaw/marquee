@@ -24,7 +24,7 @@ code {
 }
 
 span {
-  font-family: "Noto Sans HK", "Noto Sans Lao Looped", sans-serif;
+  font-family: "Noto Sans HK" sans-serif, "Noto Sans Lao Looped", sans-serif;
 }
 
 @keyframes vertical-rolling {

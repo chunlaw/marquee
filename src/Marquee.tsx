@@ -8,6 +8,7 @@ const Marquee = () => {
     text = "精力善用　自他共榮",
     color = "yellow",
     bgColor = "black",
+    font = '"Noto Sans HK" sans-serif',
   } = useParams();
   const [direction, setDirection] = useState<"vertical" | "horizontal">(
     "horizontal"
@@ -39,8 +40,9 @@ const Marquee = () => {
       animationTimingFunction: "linear",
       animationIterationCount: "infinite",
       visibility: show ? "visible" : "hidden",
+      fontFamily: font,
     }),
-    [color, duration, direction, show]
+    [color, duration, direction, show, font]
   );
 
   const handleResize = useMemo(
