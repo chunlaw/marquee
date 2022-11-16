@@ -2,6 +2,7 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Marquee from "./Marquee";
 import Panel from "./Panel";
+import "./i18n";
 
 function App() {
   return (

@@ -22,6 +22,8 @@ import {
   RestartAlt as RestartAltIcon,
   ContentCopy as ContentCopyIcon,
 } from "@mui/icons-material";
+import { useTranslation } from "react-i18next";
+import LanguagePicker from "./components/LanguagePicker";
 
 interface PanelState {
   text: string;
@@ -42,6 +44,7 @@ const CorePanel = () => {
     JSON.parse(localStorage.getItem("marquee") ?? JSON.stringify(DEFAULT_STATE))
   );
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const handleChange = useCallback(
     (field: keyof PanelState, v: any) => {
@@ -74,23 +77,26 @@ const CorePanel = () => {
 
   return (
     <Container maxWidth="xs" sx={rootSx}>
-      <Typography variant="h3">應援板</Typography>
+      <Box sx={headerSx}>
+        <Typography variant="h3">{t("App Name")}</Typography>
+        <LanguagePicker sx={langSx} />
+      </Box>
       <iframe src={resultUrl} style={{ width: "100%" }} title="demo" />
       <TextField
-        label={"句子"}
+        label={t("Message")}
         value={state.text}
         onChange={(e) => handleChange("text", e.target.value)}
         fullWidth
       />
       <Box sx={rowSx}>
-        <InputLabel>長度</InputLabel>
+        <InputLabel>{t("Duration")}</InputLabel>
         <SliderField
           value={state.duration}
           onChange={(v) => handleChange("duration", v)}
         />
       </Box>
       <Box sx={rowSx}>
-        <InputLabel>字色</InputLabel>
+        <InputLabel>{t("Font Color")}</InputLabel>
         <ColorPicker
           value={state.color}
           defaultValue={state.color}
@@ -98,7 +104,7 @@ const CorePanel = () => {
         />
       </Box>
       <Box sx={rowSx}>
-        <InputLabel>底色</InputLabel>
+        <InputLabel>{t("Background")}</InputLabel>
         <ColorPicker
           value={state.bgColor}
           defaultValue={state.bgColor}
@@ -106,8 +112,8 @@ const CorePanel = () => {
         />
       </Box>
       <Box sx={rowSx}>
-        <InputLabel>字體</InputLabel>
-        <Box sx={{ width: "80%" }}>
+        <InputLabel>{t("Font Family")}</InputLabel>
+        <Box sx={{ width: "60%" }}>
           <Select
             value={state.font}
             onChange={(e) => handleChange("font", e.target.value as string)}
@@ -147,7 +153,7 @@ const CorePanel = () => {
           onClick={() => setState(DEFAULT_STATE)}
           startIcon={<RestartAltIcon />}
         >
-          重設
+          {t("Reset")}
         </Button>
       </Box>
       <Typography
@@ -187,6 +193,21 @@ const rootSx: SxProps<Theme> = {
   flexDirection: "column",
   justifyContent: "center",
   alignItems: "center",
+};
+
+const headerSx: SxProps<Theme> = {
+  display: "flex",
+  width: "100%",
+  justifyContent: "center",
+  position: "relative",
+};
+
+const langSx: SxProps<Theme> = {
+  position: "absolute",
+  right: 0,
+  display: "flex",
+  height: "100%",
+  py: 1,
 };
 
 const rowSx: SxProps<Theme> = {

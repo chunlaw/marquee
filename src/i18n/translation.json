@@ -1,0 +1,40 @@
+{
+  "en": {
+    "translation": {
+      "App Name": "Fans Board"
+    }
+  },
+  "ja": {
+    "translation": {
+      "App Name": "応援ボード",
+      "Message": "言付け",
+      "Duration": "期限",
+      "Font Color": "フォントの色",
+      "Background": "背景",
+      "Font Family": "フォントファミリー",
+      "Reset": "リセット"
+    }
+  },
+  "th": {
+    "translation": {
+      "App Name": "กระดาษแข็งสนับสนุน",
+      "Message": "ประโยค",
+      "Duration": "ระยะเวลา",
+      "Font Color": "สีตัวอักษร",
+      "Background": "พื้นหลัง",
+      "Font Family": "แบบอักษร",
+      "Reset": "รีเซ็ต"
+    }
+  },
+  "zh": {
+    "translation": {
+      "App Name": "應援板",
+      "Message": "句子",
+      "Duration": "時長",
+      "Font Color": "字色",
+      "Background": "背景",
+      "Font Family": "字體",
+      "Reset": "重設"
+    }
+  }
+}
