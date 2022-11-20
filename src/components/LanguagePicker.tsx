@@ -10,9 +10,9 @@ const LanguagePicker = ({ sx }: { sx: SxProps<Theme> }) => {
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     setAnchorEl(null);
-  };
+  }, [setAnchorEl]);
 
   const changeLanguage = useCallback(
     (lang: string) => {
