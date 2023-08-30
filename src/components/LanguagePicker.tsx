@@ -19,7 +19,7 @@ const LanguagePicker = ({ sx }: { sx: SxProps<Theme> }) => {
       i18n.changeLanguage(lang);
       handleClose();
     },
-    [i18n, handleClose]
+    [i18n, handleClose],
   );
 
   return (

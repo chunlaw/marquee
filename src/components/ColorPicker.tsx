@@ -32,7 +32,7 @@ const ColorPicker = ({ value, defaultValue, onChange }: ColorPickerProps) => {
       }
       setTmpValue(v);
     },
-    [onChange]
+    [onChange],
   );
 
   return (

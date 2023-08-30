@@ -19,7 +19,7 @@ const SliderField = ({ value, onChange }: SliderFieldProps) => {
         onChange(parseFloat(v));
       }
     },
-    [setText, onChange]
+    [setText, onChange],
   );
 
   useEffect(() => {

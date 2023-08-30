@@ -6,11 +6,11 @@ import "./i18n";
 import { useTranslation } from "react-i18next";
 
 function App() {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
 
   useEffect(() => {
-    document.title = t('App Name')
-  }, [t])
+    document.title = t("App Name");
+  }, [t]);
 
   return (
     <Routes>

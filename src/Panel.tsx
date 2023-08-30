@@ -41,7 +41,9 @@ const theme = createTheme({
 
 const CorePanel = () => {
   const [state, setState] = useState<PanelState>(
-    JSON.parse(localStorage.getItem("marquee") ?? JSON.stringify(DEFAULT_STATE))
+    JSON.parse(
+      localStorage.getItem("marquee") ?? JSON.stringify(DEFAULT_STATE),
+    ),
   );
   const navigate = useNavigate();
   const { t } = useTranslation();
@@ -53,7 +55,7 @@ const CorePanel = () => {
         [field]: v,
       }));
     },
-    [setState]
+    [setState],
   );
 
   const resultUrl = useMemo(
@@ -65,10 +67,10 @@ const CorePanel = () => {
         encodeURIComponent(state.bgColor),
         encodeURIComponent(state.font),
         encodeURIComponent(
-          state.text !== "" ? state.text : "精力善用　自他共榮"
+          state.text !== "" ? state.text : "精力善用　自他共榮",
         ),
       ].join("/"),
-    [state]
+    [state],
   );
 
   useEffect(() => {
@@ -140,7 +142,7 @@ const CorePanel = () => {
           variant="contained"
           onClick={() =>
             window.navigator.clipboard.writeText(
-              `${window.location.href}${resultUrl.slice(1)}`
+              `${window.location.href}${resultUrl.slice(1)}`,
             )
           }
           color="secondary"

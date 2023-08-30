@@ -11,7 +11,7 @@ const Marquee = () => {
     font = '"Noto Sans HK" sans-serif',
   } = useParams();
   const [direction, setDirection] = useState<"vertical" | "horizontal">(
-    "horizontal"
+    "horizontal",
   );
   const [show, setShow] = useState<boolean>(false);
   const navigate = useNavigate();
@@ -25,7 +25,7 @@ const Marquee = () => {
       height: "100vh",
       position: "fixed",
     }),
-    [bgColor]
+    [bgColor],
   );
 
   const textStyle = useMemo<React.CSSProperties>(
@@ -42,18 +42,18 @@ const Marquee = () => {
       visibility: show ? "visible" : "hidden",
       fontFamily: font,
     }),
-    [color, duration, direction, show, font]
+    [color, duration, direction, show, font],
   );
 
   const handleResize = useMemo(
     () =>
       debounce(() => {
         setDirection(() =>
-          window.innerHeight < window.innerWidth ? "horizontal" : "vertical"
+          window.innerHeight < window.innerWidth ? "horizontal" : "vertical",
         );
         setShow(true);
       }, 200),
-    [setDirection, setShow]
+    [setDirection, setShow],
   );
 
   useEffect(() => {
