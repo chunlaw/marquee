@@ -1,6 +1,13 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, {
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import debounce from "lodash.debounce";
+import AppContext from "./AppContext";
 
 const Marquee = () => {
   const {
@@ -14,6 +21,7 @@ const Marquee = () => {
     "horizontal",
   );
   const [show, setShow] = useState<boolean>(false);
+  const { logEntry } = useContext(AppContext);
   const navigate = useNavigate();
 
   const containerStyle = useMemo<React.CSSProperties>(
@@ -59,6 +67,9 @@ const Marquee = () => {
   useEffect(() => {
     handleResize();
     window.addEventListener("resize", handleResize);
+    if (!inIframe()) {
+      logEntry(window.location.pathname);
+    }
     return () => {
       window.removeEventListener("resize", handleResize);
     };
@@ -78,3 +89,11 @@ const Marquee = () => {
 };
 
 export default Marquee;
+
+const inIframe = (): boolean => {
+  try {
+    return window.self !== window.top;
+  } catch (e) {
+    return true;
+  }
+};

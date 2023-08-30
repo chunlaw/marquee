@@ -12,7 +12,7 @@
       "Font Color": "フォントの色",
       "Background": "背景",
       "Font Family": "フォントファミリー",
-      "Reset": "リセット"
+      "Bookmark": "集める"
     }
   },
   "th": {
@@ -23,7 +23,7 @@
       "Font Color": "สีตัวอักษร",
       "Background": "พื้นหลัง",
       "Font Family": "แบบอักษร",
-      "Reset": "รีเซ็ต"
+      "Bookmark": "รเก็บรวบรวม"
     }
   },
   "zh": {
@@ -34,7 +34,7 @@
       "Font Color": "字色",
       "Background": "背景",
       "Font Family": "字體",
-      "Reset": "重設"
+      "Bookmark": "收藏"
     }
   }
 }

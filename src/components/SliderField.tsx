@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Box, Input, Slider, SxProps, Theme } from "@mui/material";
 import { IconButton } from "@mui/material";
 import { Add as AddIcon, Remove as MinusIcon } from "@mui/icons-material";
@@ -37,7 +37,7 @@ const SliderField = ({ value, onChange }: SliderFieldProps) => {
       </IconButton>
       <Slider
         value={value}
-        onChange={(e, v) => onChange(v as number)}
+        onChange={(_, v) => onChange(v as number)}
         step={0.1}
         min={0.1}
         max={40}

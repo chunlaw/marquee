@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import Marquee from "./Marquee";
-import Panel from "./Panel";
+import Home from "./Home";
 import "./i18n";
 import { useTranslation } from "react-i18next";
 
@@ -22,7 +22,7 @@ function App() {
         path="/:duration/:color/:bgColor/:font/:text"
         element={<Marquee />}
       />
-      <Route path="/" element={<Panel />} />
+      <Route path="/" element={<Home />} />
       <Route path="*" element={<Marquee />} />
     </Routes>
   );

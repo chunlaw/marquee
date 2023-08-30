@@ -10,12 +10,15 @@
     "i18next": "^22.0.5",
     "i18next-browser-languagedetector": "^7.0.1",
     "lodash.debounce": "^4.0.8",
+    "memoize-one": "^6.0.0",
     "react": "^18.2.0",
     "react-color": "^2.19.3",
     "react-dom": "^18.2.0",
     "react-i18next": "^12.0.0",
-    "react-router-dom": "^6.4.3",
-    "web-vitals": "^2.1.4"
+    "react-router-dom": "^6.15.0",
+    "react-virtualized-auto-sizer": "^1.0.20",
+    "react-window": "^1.8.9",
+    "web-vitals": "^3.4.0"
   },
   "scripts": {
     "dev": "vite",
@@ -46,9 +49,10 @@
   "homepage": "https://marquee.chunlaw.io",
   "devDependencies": {
     "@types/lodash.debounce": "^4.0.7",
-    "@types/react-color": "^3.0.6",
     "@types/react": "^18.2.15",
+    "@types/react-color": "^3.0.6",
     "@types/react-dom": "^18.2.7",
+    "@types/react-window": "^1.8.5",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
     "@vitejs/plugin-react-swc": "^3.3.2",
