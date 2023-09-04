@@ -9,6 +9,7 @@ import {
 import Header from "./layouts/Header";
 import Footer from "./layouts/Footer";
 import Panel from "./components/panel/Panel";
+import LoadingModal from "./components/layouts/LoadingModal";
 
 const theme = createTheme({
   palette: {
@@ -33,6 +34,7 @@ const Home = () => {
         <Header />
         <Panel />
         <Footer />
+        <LoadingModal />
       </Container>
     </ThemeProvider>
   );

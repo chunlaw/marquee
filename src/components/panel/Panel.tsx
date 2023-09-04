@@ -20,6 +20,7 @@ import {
 } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import GifBtn from "../GifBtn";
 
 const Panel = () => {
   const {
@@ -48,7 +49,12 @@ const Panel = () => {
 
   return (
     <>
-      <iframe src={resultUrl} style={{ width: "100%" }} title="demo" />
+      <iframe
+        id="showcase"
+        src={resultUrl}
+        style={{ width: "100%" }}
+        title="demo"
+      />
       <TextField
         label={t("Message")}
         value={state.text}
@@ -113,8 +119,9 @@ const Panel = () => {
           color="secondary"
           startIcon={<ContentCopyIcon />}
         >
-          Copy Url
+          Share
         </Button>
+        <GifBtn />
         <Button
           variant="outlined"
           onClick={() => saveEntry(resultUrl)}

@@ -48,7 +48,9 @@ const Marquee = () => {
       animationTimingFunction: "linear",
       animationIterationCount: "infinite",
       visibility: show ? "visible" : "hidden",
+      lineHeight: 1,
       fontFamily: font,
+      fontSize: `80${direction === "horizontal" ? "vh" : "vw"}`,
     }),
     [color, duration, direction, show, font],
   );

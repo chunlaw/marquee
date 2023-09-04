@@ -12,6 +12,7 @@ interface AppContextState {
   savedEntries: string[];
   recentEntries: string[];
   menuOpen: boolean;
+  generatingGif: boolean;
 }
 
 interface AppContextValue extends AppContextState {
@@ -21,6 +22,7 @@ interface AppContextValue extends AppContextState {
   logEntry: (entry: string) => void;
   removeEntry: (entry: string) => void;
   toggleMenu: () => void;
+  toggleGeneratingGif: () => void;
 }
 
 const AppContext = createContext({} as AppContextValue);
@@ -74,6 +76,17 @@ export const AppContextProvider = ({ children }: { children: ReactNode }) => {
     }));
   }, []);
 
+  const toggleGeneratingGif = useCallback(() => {
+    setState((prev) => ({
+      ...prev,
+      generatingGif: !prev.generatingGif,
+    }));
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("marquee", JSON.stringify(state.marquee));
+  }, [state.marquee]);
+
   useEffect(() => {
     localStorage.setItem("savedEntries", JSON.stringify(state.savedEntries));
   }, [state.savedEntries]);
@@ -92,6 +105,7 @@ export const AppContextProvider = ({ children }: { children: ReactNode }) => {
         logEntry,
         removeEntry,
         toggleMenu,
+        toggleGeneratingGif,
       }}
     >
       {children}
@@ -172,4 +186,5 @@ const DEFAULT_STATE: AppContextState = {
   savedEntries: JSON.parse(localStorage.getItem("savedEntries") ?? "[]"),
   recentEntries: JSON.parse(localStorage.getItem("recentEntries") ?? "[]"),
   menuOpen: false,
+  generatingGif: false,
 };
