@@ -4,6 +4,7 @@ import { Marquee } from "../data";
 import { useContext } from "react";
 import AppContext from "../AppContext";
 import rasterizeHTML from "rasterizehtml";
+// @ts-ignore
 import CanvasGifEncoder from "@pencil.js/canvas-gif-encoder";
 
 const GifBtn = () => {
