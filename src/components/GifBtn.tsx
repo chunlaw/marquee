@@ -46,7 +46,7 @@ const GifBtn = () => {
 export default GifBtn;
 
 const getMarqueeFrame = (
-  { bgColor, text, color, font, duration }: Marquee,
+  { bgColor, text, color, duration }: Marquee,
   frame: number,
   encoder: CanvasGifEncoder,
 ) => {
