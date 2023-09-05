@@ -13,18 +13,21 @@ const GifBtn = () => {
 
   const handleClick = async () => {
     toggleGeneratingGif();
-    const encoder = new CanvasGifEncoder(300, 150, { quality: 1 });
-    for (let i = 0; i < marquee.duration; i += 0.1) {
-      await getMarqueeFrame(marquee, i, encoder);
+    try {
+      const encoder = new CanvasGifEncoder(300, 150, { quality: 1 });
+      for (let i = 0; i < marquee.duration; i += 0.1) {
+        await getMarqueeFrame(marquee, i, encoder);
+      }
+      const gif = encoder.end();
+      encoder.flush();
+      const blob = new Blob([gif], {
+        type: "image/gif",
+      });
+      const file = URL.createObjectURL(blob);
+      window.open(file, "_blank");
+    } finally {
+      toggleGeneratingGif();
     }
-    const gif = encoder.end();
-    encoder.flush();
-    const blob = new Blob([gif], {
-      type: "image/gif",
-    });
-    const file = URL.createObjectURL(blob);
-    window.open(file, "_blank");
-    toggleGeneratingGif();
   };
 
   return (
@@ -72,7 +75,7 @@ const getMarqueeFrame = (
             animation-timing-function: linear;
             animation-iteration-count: infinite;
             visibility: visible;
-            font-family: '${font}';
+            padding-top: 5px;
             font-size: 80vh;
             line-height: 1;
             animation-play-state: paused;

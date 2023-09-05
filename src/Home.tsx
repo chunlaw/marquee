@@ -48,4 +48,6 @@ const rootSx: SxProps<Theme> = {
   flexDirection: "column",
   justifyContent: "center",
   alignItems: "center",
+  height: "100vh",
+  marginTop: "10px",
 };

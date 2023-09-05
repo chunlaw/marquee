@@ -120,8 +120,8 @@ export const FONT_FAMILY: Array<{ label: string; id: string }> = [
   { label: "昭源宋體", id: "Chiron Sung HK WS" },
   { label: '"Noto Sans HK" sans-serif', id: '"Noto Sans HK" sans-serif' },
   {
-    label: '"Noto Sans Lao Looped" sans-serif',
-    id: '"Noto Sans Lao Looped" sans-serif',
+    label: '"Noto Sans Lao Looped sans-serif"',
+    id: '"Noto Sans Lao Looped sans-serif"',
   },
 ];
 

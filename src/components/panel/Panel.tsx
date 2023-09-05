@@ -52,7 +52,7 @@ const Panel = () => {
       <iframe
         id="showcase"
         src={resultUrl}
-        style={{ width: "100%" }}
+        style={{ width: "100%", pointerEvents: "none" }}
         title="demo"
       />
       <TextField
