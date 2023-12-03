@@ -15,8 +15,17 @@ const GifBtn = () => {
     toggleGeneratingGif();
     try {
       const encoder = new CanvasGifEncoder(300, 150, { quality: 1 });
+      const img = await fetch( marquee.bgUrl )
+        .then(r => r.blob())
+        .then(blob => new Promise<string>((resolve) => {
+          const reader = new FileReader();
+          reader.onloadend = () => resolve(reader.result as string)
+          reader.readAsDataURL(blob)
+        }))
+        .catch(() => "")
+
       for (let i = 0; i < marquee.duration; i += 0.1) {
-        await getMarqueeFrame(marquee, i, encoder);
+        await getMarqueeFrame(marquee, i, img, encoder);
       }
       const gif = encoder.end();
       encoder.flush();
@@ -36,7 +45,7 @@ const GifBtn = () => {
       variant="contained"
       startIcon={<DownloadIcon />}
       onClick={handleClick}
-      disabled={generatingGif}
+      disabled={generatingGif || marquee.text === ""}
     >
       GIF
     </Button>
@@ -45,9 +54,10 @@ const GifBtn = () => {
 
 export default GifBtn;
 
-const getMarqueeFrame = (
-  { bgColor, text, color, duration }: Marquee,
+const getMarqueeFrame = async (
+  { bgColor, text, color, duration, bgUrl }: Marquee,
   frame: number,
+  img: string, 
   encoder: CanvasGifEncoder,
 ) => {
   const html = `
@@ -55,6 +65,10 @@ const getMarqueeFrame = (
       style="
         overflow: clip;
         background: ${bgColor};
+        background-image: ${bgUrl ? `url(${img})`: "none"};
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
         flex: 1;
         width: ${window.innerWidth}px;
         height: ${window.innerHeight}px;
@@ -98,6 +112,8 @@ const getMarqueeFrame = (
       }
     </style>
   `;
+
+  console.log(html)
 
   return rasterizeHTML
     .drawHTML(

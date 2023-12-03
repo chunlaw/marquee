@@ -43,6 +43,7 @@ const Panel = () => {
         encodeURIComponent(
           state.text !== "" ? state.text : "精力善用　自他共榮",
         ),
+        encodeURIComponent(btoa(state.bgUrl)),
       ].join("/"),
     [state],
   );
@@ -82,6 +83,14 @@ const Panel = () => {
           value={state.bgColor}
           defaultValue={state.bgColor}
           onChange={(e) => updateMarquee("bgColor", e)}
+        />
+      </Box>
+      <Box sx={rowSx}>
+        <InputLabel>{t("Background URL")}</InputLabel>
+        <TextField
+          value={state.bgUrl}
+          onChange={({target: {value}}) => updateMarquee("bgUrl", value)}
+          size="small"
         />
       </Box>
       <Box sx={rowSx}>

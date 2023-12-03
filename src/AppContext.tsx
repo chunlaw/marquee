@@ -129,6 +129,7 @@ const DEFAULT_MARQUEE: Marquee = {
   text: "精力善用　自他共榮",
   color: "yellow",
   bgColor: "black",
+  bgUrl: "",
   duration: 5,
   font: FONT_FAMILY[0].id,
 };

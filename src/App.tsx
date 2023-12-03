@@ -22,6 +22,10 @@ function App() {
         path="/:duration/:color/:bgColor/:font/:text"
         element={<Marquee />}
       />
+      <Route
+        path="/:duration/:color/:bgColor/:font/:text/:bgUrl"
+        element={<Marquee />}
+      />
       <Route path="/" element={<Home />} />
       <Route path="*" element={<Marquee />} />
     </Routes>
